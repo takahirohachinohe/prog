@@ -1,0 +1,331 @@
+@charset "utf-8";
+html{
+    font-size: 62.5%;/*16px × 62.5% = 10px*/
+}
+
+
+
+body{
+    color:#333333;
+    font-family:"Open Sans",'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, "メイリオ", Meiryo, sans-serif;
+    font-size: 1.6rem;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.body1{
+    position: relative;
+}
+.body-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+}
+
+.body-text2{
+    font-size: 48px;
+    transform: translate3D(-50%,-50%,0);
+    color: #ffffff;
+    font-weight: bold;
+    padding-bottom: 40px;
+    text-align: center;
+}
+
+.body-text3{
+    font-size: 32px;
+    transform: translate3D(-50%,-50%,0);
+    color: #ffffff;
+    text-align: center;
+}
+
+/* header */
+.header-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+.header-image{
+    max-width: 200px;
+    height: auto;
+    padding-left: 113px;
+}
+
+.header-wrapper2{
+    display: flex;
+    align-items: center;
+    margin-right: 24px;
+
+}
+
+.header-item{
+    margin: 0 0 0 24px;
+}
+
+/* about */
+.about-wrapper{
+    width: 640epx;
+    margin: auto;
+    margin-bottom: 80px;
+}
+
+.about-title{
+color: #FFD61A;
+font-size: 24px;
+font-weight: bold;
+margin-bottom: 24px;
+margin-top: 64px;
+}
+.about-text{
+    font-size: 16px;
+    margin-bottom: 64px;
+}
+
+
+.about-text2{
+text-align: center;
+margin-bottom: 64px;
+}
+
+.about-text3{
+margin-bottom: 45px;
+}
+.about-text4{
+    margin-bottom: 15px;
+}
+.about-text5{
+    margin-bottom: 45px;
+}
+.about-text6{
+    margin-bottom: 45px;
+}
+.about-text7{
+    margin-bottom: 15px;
+}
+.course-title{
+    color: #000;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    margin-top: 64px;
+}
+.course-text{
+    margin-bottom: 32px;
+}
+.course-text2{
+    margin-bottom: 10px;
+}
+.course-text3{
+    margin-bottom: 64px;
+}
+
+
+.course1{
+    display:flex;
+}
+.course-image1{
+    max-width: 50%;
+    height: auto;
+}
+.course_text{
+    font-size: 18px;
+    margin-bottom: 32px;
+}
+.course_text2{
+    margin-bottom: 16px;
+}
+.course_text3{
+    margin-bottom: 64px;
+}
+.course-text{
+    min-width: 50%;
+    height:auto;
+}
+
+.course-text2{
+    max-width: 522px;S
+    margin: auto;
+    padding-left: 48px;
+}
+
+.course-text3{
+    padding-top: 149px;
+    font-size: 21px;
+    font-weight: bold;
+
+}
+.course-text4{
+    line-height: 2;
+}
+.news-title{
+    margin-bottom: 64px;
+}
+
+.news-wrapper{
+    display: flex;
+    max-width: 1300px;
+    margin: auto;
+    justify-content: center
+}
+.news-wrapper2{
+    width: 500px;
+    margin: 15px;
+}
+
+
+.news-text{
+    margin-bottom: 24px;
+}
+.news-image{
+    max-width: 500px;
+    height: auto;
+}
+.news-text2{
+    margin-bottom: 24px;
+    font-weight: bold;
+}
+.news-text3{
+    line-height: 2;
+    font-size: 16px;
+}
+
+.btn{
+    display: block;
+    margin: auto;
+    text-align: center;
+    padding: 21px 0;
+    width: 264px;
+    background-color: #FFD61A;
+    color: #fff;
+    font-size: 1.8rem;
+    border: none;
+}
+
+.access-access{
+    font-size: 24px;
+    margin-bottom: 24px;
+    padding-top: 65px;
+}
+.access-access2{
+    padding-bottom: 50px;
+}
+.access-map{
+    max-width: 1365px;
+    margin: auto;
+    margin-bottom: 64px;
+}
+.access-wrapper{
+    width: 515px;
+    margin: auto;
+}
+.access-inner{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+.access-title{
+    width:97px;
+    text-align: right;
+    font-weight: bold;
+    padding-bottom: 21px;
+    padding-right: 24px;
+}
+.access-answer{
+    width:373px;
+    padding-bottom: 21px;
+}
+
+
+.contact-wrapper{
+    width: 500px;
+    margin: auto;
+}
+.contact-text2{
+margin-bottom: 48px;
+}
+.contact-text3{
+margin-bottom: 16px;
+}
+.contact-text4{
+margin-bottom: 48px;
+}
+.contact-text5{
+margin-bottom: 16px;
+}
+.form-wrapper{
+    width: 525px;
+    margin: auto;
+}
+
+.form-inner{
+    display: flex;
+    flex-wrap: wrap;
+
+
+}
+.form-title{
+    width: 110px;
+    text-align: right;
+    font-weight: bold;
+    margin-right: 24px;
+    padding: 32px 0 0 0;
+}
+.form-title.check-radio{
+    padding: 24px 0 0 0;
+}
+.form-title.check-radio2{
+    padding: 24px 0 0 0;
+}
+.form-answer{
+    width: 388px;
+    padding: 24px 0 0 0;
+}
+.form-parts{
+    width: 100%;
+    padding: 8px;
+    border:solid 1px #c9c9c9;
+}
+.form-item{
+    width: 388px;
+    font-size:14px;
+}
+.form-item2{
+    padding: 24px 0 0 0;
+}
+input[type*="radio"]{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+    margin: 0 10px 0 0;
+    border: solid 1px #a0a0a0;
+    border-radius: 50%;
+    vertical-align: -2px;
+}
+input[type*="radio"]:checked{
+    background-color:#333333;
+}
+.btn-form{
+    margin-top: 40px;
+    margin-bottom: 120px;
+    color: #fff;
+}
+
+
+
+.foot2{
+    text-align: center;
+    padding: 24px 0;
+    background-color: #707070;
+    color: #fff;
+}
