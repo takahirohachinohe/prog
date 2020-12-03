@@ -1,0 +1,104 @@
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+}
+header{
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+
+}
+h1{
+    font-size: 100%;
+}
+main{
+    width:100%;
+    display: block;
+    border-bottom:1px solid #ccc;
+    position:relative;
+    text-align: center;
+}
+footer{
+    background-color: #fff;
+    border-bottom:1px solid #ccc;
+    text-align: center;
+}
+p{
+    font-size:200%;
+    text-align: center;
+    border-bottom:1px solid #fff;
+    height:200px;
+}
+ul{
+    padding: 0;
+    border-top: 1px solid #000000;
+    display:table;  /* 定義 */
+    table-layout: fixed;
+    width:96%;
+    font-size: 80%;
+    margin: 0 3%;
+    text-align: center;
+}
+li{
+    list-style-type:none;
+    border: 1px solid #666;
+    background-color: #fff;
+    display:table-cell;  /* 定義 */
+    cursor: pointer;
+    color:#0d7dfd;
+}
+li:hover{
+    background: #0d7dfd;
+    color:#fff;
+}
+table{
+    margin: 20px 3%;
+    border:1px solid #8dc3f5;
+    width:96%;
+    
+}
+th{
+    width:30%;
+    font-size:24px;
+    background-color:#d0e7fc;
+    border-bottom: 1px solid #8dc3f5;
+}
+td{
+    font-size:16px;
+    background-color:rgb(241, 239, 239);
+    border-bottom: 1px solid #8dc3f5;
+}
+.ai{
+font-size: 100px;
+text-align: center;
+margin-left: 100px;
+}
+select{
+    font-size: 50px;
+    text-align: center;
+
+
+}
+input{
+    font-size: 50px;
+}
+.y{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 60px;
+    f
+}
+.z{padding-bottom: 60px;
+    font-size: 50px;
+    height: 100px;
+    display: flex;
+}
+.z1{width: 150px;}
+.z2{width: 400px;}
+
+
+
+
+.d{
+    font-size: 50px;
+}
