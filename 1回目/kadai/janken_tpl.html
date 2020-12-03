@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title id="win span">限定じゃんけん</title>
+</head>
+<body>
+
+<header>
+  <h1  class=p >限定じゃんけん</h1>
+</header>
+
+<main class="z">
+
+  <img id="lose" src="kaiji/kaijipa.jpg">
+
+  <img src="kaiji/zawazawa.gif" onclick="this.setAttribute('src', this.getAttribute('src').replace(/_play.gif$/g, '.gif'));" style="cursor: pointer;">
+
+
+  <div class="s">
+    <img class="t" src = "kaiji/tonegawa.jpg"  id="pc_hands"></img>
+  </div>
+
+  <img  src="kaiji/zawazawa.gif" onclick="this.setAttribute('src', this.getAttribute('src').replace(/_play.gif$/g, '.gif'));" style="cursor: pointer;">
+
+
+</main>
+
+<footer class="j">
+  <div class="g">
+    <img class= "h" src = "kaiji/kaijigu.jpg" id="gu_btn" ></img>
+    <img class= "h" src = "kaiji/kaijicho.jpg" id="cho_btn"></img>
+    <img class= "h" src = "kaiji/kaijipa.jpg" id="par_btn"></img>
+    <img class="t" src = "kaiji/zawazawa.jpg"  id="judgment"></img>
+
+
+  </div>
+</footer>
+<script>
+
+
+let score = 0
+
+//じゃんけん用のSCRIPTを書いてください
+
+
+$("#gu_btn").on("click",function(){
+
+const r = Math.ceil(Math.random()*3); 
+DataView
+
+
+console.log(r);
+if(r==1){
+    $("#pc_hands").attr('src','kaiji/kagawa-gu.jpg') 
+    $(function(){
+    setTimeout(function(){
+      $("#pc_hands").attr('src','kaiji/tonedogeza.gif')
+    },3000);
+    $("#pc_hands").css("width",700);
+    $("#judgment").attr('src','kaiji/hikiwake.gif') 
+  });
+  };
+if(r==2){
+    $("#pc_hands").attr('src','kaiji/kagawa-cho.jpg');
+    $(function(){
+    setTimeout(function(){
+      $("#pc_hands").attr('src','kaiji/tonedogeza.gif')
+    },3000);});
+    $("#pc_hands").css("width",700);
+    $("#judgment").attr('src','kaiji/shourigu.png');
+    score --;
+  };
+if(r==3){
+    $("#pc_hands").attr('src','kaiji/kagawa-pa.jpg');
+    $(function(){
+    setTimeout(function(){
+      $("#pc_hands").attr('src','kaiji/tonedogeza.gif')
+    },3000); });
+    $("#pc_hands").css("width",700);
+    $("#judgment").attr('src','kaiji/haibokugu.jpg');
+    score ++;
+  };
+});  
+
+
+$("#cho_btn").on("click",function(){
+  const r = Math.ceil(Math.random()*3); 
+  console.log(r);
+if(r==1){
+    $("#pc_hands").attr('src','kaiji/kagawa-gu.jpg') ;
+    $(function(){
+    setTimeout(function(){
+      $("#pc_hands").attr('src','kaiji/kagawadogeza.gif')
+    },3000);});
+    $("#pc_hands").css("width",700);
+    $("#judgment").attr('src','kaiji/s') ;
+    score --;
+  };
+
+if(r==2){
+    $("#pc_hands").attr('src','kaiji/kagawa-cho.jpg');
+    $(function(){
+    setTimeout(function(){
+      $("#pc_hands").attr('src','kaiji/tonedogeza.gif')
+    },3000); });
+    $("#pc_hands").css("width",700);
+    $("#judgment").attr('src','kaiji/hikiwake.gif');
+    score ++;
+  };
+if(r==3){
+    $("#pc_hands").attr('src','kaiji/kagawa-pa.jpg');
+    $(function(){
+    setTimeout(function(){
+      $("#pc_hands").attr('src','kaiji/tonedogeza.gif')
+    },3000); });
+    $("#pc_hands").css("width",700);
+    $("#judgment").attr('src','kaiji/shouricho.png')
+  };
+});  
+    
+$("#par_btn").on("click",function(){
+
+
+const r = Math.ceil(Math.random()*3); 
+console.log(r);
+if(r==1){
+    $("#pc_hands").attr('src','kaiji/kagawa-gu.jpg')
+    $(function(){
+    setTimeout(function(){
+      $("#pc_hands").attr('src','kaiji/tonedogeza.gif')
+    },3000);});
+    $("#pc_hands").css("width",700);
+    $("#judgment").attr('src','kaiji/shouripa.png');
+    score ++;
+  
+  }
+if(r==2){
+    $("#pc_hands").attr('src','kaiji/kagawa-cho.jpg')
+    $(function(){
+    setTimeout(function(){
+      $("#pc_hands").attr('src','kaiji/ka')
+    },3000);});
+    $("#pc_hands").css("width",700);
+    $("#judgment").attr('src','kaiji/haibokupa.jpg');
+    score --;
+  }
+if(r==3){
+    $("#pc_hands").attr('src','kaiji/kagawa-pa.jpg')
+
+    $("#pc_hands").css("width",700)
+    $("#judgment").attr('src','kaiji/hikiwake.gif') 
+}
+    
+});  
+
+$("#lose").html(score);
+console.log(score);
+
+if(score == 0){
+$("#lose").attr('src','kaiji/kaijigu.jpg'); }
+
+if(score == 1){
+$("#lose").attr('src','kaiji/kaijicho.jpg'); }
+if(score == 2)
+{
+$("#lose").attr('src','kaiji/kaijigu.jpg') ;}
+if(score == 3)
+{
+$("#lose").attr('src','kaiji/kaijicho.jpg'); }
+if(score == -1)
+{
+$("#lose").attr('src','kaiji/kaijigu.jpg'); }
+if(score == -2)
+{
+$("#lose").attr('src','kaiji/kagawa-pa.jpg'); }
+
+if(score == -3)
+{
+$("#lose").attr('src','kaiji/kaijigu.jpg'); }
+
+</script>
+</body>
+</html>
