@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/style.css">
+<title>Chatアプリ</title>
+</head>
+<body>
+
+<!-- コンテンツ表示画面 -->
+
+
+
+
+
+
+
+
+
+<!--/ コンテンツ表示画面 -->
+<div>
+</div>
+    <div id="output" style="height :300px; overflow:auto ; border :  1px solid red;"></div>
+
+    <div>
+    名前： <input type="text" id="uname" >  
+    </div>
+    <div>
+        <textarea  id="text" cols="30" rows="10"></textarea> 
+        <button id="send">送信</button>
+        <button id="clear">全消去</buttom>
+    </div>
+    <div class="r">
+            
+        <div class="imgs" data-img="0"><img src="imgs/buke.png" width="100"></div>
+        
+        <div class="imgs" data-img="1"><img src="imgs/tuku.jpg" width="100"></div> 
+        
+        <div class="imgs" data-img="2"><img src="imgs/caram.png" width="100"></div>
+        
+
+</div>
+<div>
+    <div>
+    身長<input type="text" id="textForm1" >  
+    体重<input type="text" id="textForm2" > 
+    BMI<input type="text" id="resultForm" > 
+    </div>
+    <button id="keisan">計算</button>
+</div>
+
+
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- JQuery -->
+
+
+<!--** 以下Firebase **-->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+var firebaseConfig = {
+    apiKey: "AIzaSyAZGdxtQ3gskudcaJfTjN3tv79DathsnxU",
+    authDomain: "unit1-3220d.firebaseapp.com",
+    projectId: "unit1-3220d",
+    storageBucket: "unit1-3220d.appspot.com",
+    messagingSenderId: "284201146149",
+    appId: "1:284201146149:web:48f275eb4816c8ad68accc"
+};
+  // Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+const ref = firebase.database().ref('chat');
+//   ref()の中にディレクトリ構造を書くとそのデータ構造で保存できます
+
+//アイコン処理
+let d=0;
+const img = ["buke.png", "tuku.jpg","caram.png"];
+$(".imgs").on("click", function(){d = $(this).attr("data-img");});
+
+
+//送信イベント
+$("#send").on("click", function(){
+    const uname= $("#uname").val();
+    const text= $("#text").val();
+    const height= $("#textForm1").val();
+    const weight= $("#textForm2").val();
+    const bmi= $("#resultForm").val();
+    let health = height + "cm" + weight + "kg" +  " BMI" + bmi ;
+    let week = ["日","月","火","水","木","金","土"];
+    let now = new Date();
+    let month = now.getMonth() + 1 ;
+    let date = now.getDate();
+    var date2 = ('0' + date ) .slice(-2);
+    let h = now.getHours();//時
+    let m = now.getMinutes();
+    var mmi = ('0' + m ) .slice(-2);
+    let day = now.getDay();//曜日
+    let ss = now.getSeconds();
+    var ss2 = ('0' + ss ) .slice(-2);
+
+
+    let str = month + "/" + date2 + "(" + week[ day ]+ ")" + h  + "時" + mmi + "分" + ss2 + "秒" ;
+    const msg ={
+        uname: uname, //送信名：値
+        text: text ,//送信名
+        health: health,
+        icon:d ,
+        str:str
+    }
+
+    ref.push(msg); //サーバーにpush
+    
+    const messagesArea = document.getElementById('output');
+    messagesArea.scrollTop = messagesArea.scrollHeight;
+});
+
+// 削除処理
+
+$(document).on('click', '#ban', (event) => {
+    const id = $(event.target).closest('p').attr('id');
+    firebase.database().ref('chat/' + id).remove();
+});
+// 全削除処理
+$(document).on('click', '#clear', (event) => {
+    firebase.database().ref('chat').remove();
+});
+// 削除
+ref.on("child_removed", (data) => {
+    $("#"+data.key).remove();
+});
+
+
+
+//受信イベント
+ref.on("child_added",function(data){
+    const v = data.val();//dataオブジェクトの中のdata取得
+    const k = data.key; //KEYを取得(削除に必要らしい)
+    const h = '<p id='+k+'><img src="imgs/'+img[v.icon]+'" width="50">' + v.uname+'<br>'+v.text+' <br>'+ v.str + ' <br>'+v.health +' <button id="ban">消去</button></p>';
+    $("#output").append(h);
+
+    const messagesArea = document.getElementById('output');
+    messagesArea.scrollTop = messagesArea.scrollHeight;
+    
+});
+
+//enterで送信イベント
+$("#text").on("keydown",function(e){
+    console.log(e.keyCode);
+    if(e.keyCode==13){
+    const uname= $("#uname").val();
+    const text= $("#text").val();
+    const height= $("#textForm1").val();
+    const weight= $("#textForm2").val();
+    const bmi= $("#resultForm").val();
+    let health = height + "cm" + weight + "kg" +  " BMI" + bmi ;
+    let week = ["日","月","火","水","木","金","土"];
+    let now = new Date();
+    let month = now.getMonth() + 1 ;
+    let date = now.getDate();
+    var date2 = ('0' + date ) .slice(-2);
+    let h = now.getHours();//時
+    let m = now.getMinutes();
+    var mmi = ('0' + m ) .slice(-2);
+    let day = now.getDay();//曜日
+    let ss = now.getSeconds();
+    var ss2 = ('0' + ss ) .slice(-2);
+
+    let str = month + "/" + date2 + "(" + week[ day ]+ ")" + h  + "時" + mmi + "分" + ss2 + "秒" ;
+
+    const msg ={
+        uname: uname, //送信名：値
+        text: text ,//送信名
+        health: health,
+        icon:d ,
+        str:str
+    }
+    ref.push(msg); //サーバーにpush  
+    const messagesArea = document.getElementById('output');
+    messagesArea.scrollTop = messagesArea.scrollHeight;
+
+    }
+
+});
+
+
+        $("#keisan").on("click", function(){
+                // 2つの入力フォームの値を取得
+        var textForm1 = document.getElementById("textForm1").value;
+        var textForm2 = document.getElementById("textForm2").value;
+        
+        // BMIを計算する
+        var bmi = parseFloat(textForm2) / parseFloat(textForm1) / parseFloat(textForm1) * 10000 ; 
+        var c = Math.round( bmi ) ;
+        
+        // BMIの結果を別の入力フォームに表示
+        var resultForm = document.getElementById("resultForm");
+        resultForm.value = c;
+});
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
