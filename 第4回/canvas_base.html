@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>canvas_base.html</title>
+</head>
+
+<body>
+    <section>
+        <h1>Canvas</h1>
+        <nav>
+            <!-- 線の色を変更するHTML要素 -->
+            <h1 id="echo">色</h1>
+            <input type="color" id="color">
+            
+            <!-- 線の太さを変更するHTML要素 -->
+            <h1 id="echo2">太さ</h1>
+            <input type="range" id="range" min="1" max="150" value="3">
+            <button id="clear_btn">クリアー</button>
+            <button type="button" id="modoru">戻る</button>
+            <button type="button" id="susumu">進む</button>
+        </nav>
+        <canvas id="drowarea" width="500" height="500" style="border:1px solid blue;"></canvas>
+    </section>
+
+
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script>
+        //初期化(変数letで宣言)
+        let canvas_mouse_event = false; //スイッチ [ true=線を引く, false=線は引かない ]  ＊＊＊
+        let oldX = 0; //１つ前の座標を代入するための変数
+        let oldY = 0; //１つ前の座標を代入するための変数
+        let bold_line = 1; //ラインの太さをここで指定
+        let color = "#000"; //ラインの色をここで指定
+
+        $("#range").on("change",function(){
+        const r = $(this).val();　//スライダーの値の取得
+        $("#echo2").html(r);
+        bold_line=r;
+
+        $("#color").on("change",function(){
+        const c = $(this).val(); //色値の取得color のchangeがおこったところのvalを取得
+        $("#echo").html(c);//表示
+        color=c;
+});
+})
+
+
+
+
+
+        //------------------------------------------------
+        //const can = $("#drowarea")[0]; //CanvasElement
+        //const ctx = can.getContext("2d"); //描画するための準備！
+        //------------------------------------------------
+        //上2つのスクリプトを記述します。
+        const can = $("#drowarea")[0]; //CanvasElement
+        const ctx = can.getContext("2d"); //描画するための準備
+        // スタックしておく最大回数。
+        const STACK_MAX_SIZE = 5;
+
+        
+
+        //カラー指定
+        ctx.fillStyle = "#ff0000";
+        //fontサイズ、書式
+        $("#bold").on("click",function(){
+        ctx.font = "100px _sans";
+        })
+        console.log(ctx.font);
+        
+
+        //mousedown：フラグをTrue
+        //-----------------------------------------------
+        //oldX = e.offsetX;       //MOUSEDOWNしたX横座標取得
+        //oldY = e.offsetY; //MOUSEDOWN Y高さ座標取得
+        //canvas_mouse_event=true;
+        //-----------------------------------------------
+        //上5つのスクリプトを記述します。
+        $(can).on("mousedown",function(e){
+            console.log(e);
+            oldX = e.offsetX;//現在地点XをoldXに代入
+            oldY = e.offsetY;//現在地点YをoldYに代入
+            canvas_mouse_event = true;//書くぞー!!
+
+        });
+
+        //mousemove：フラグがTrueだったら描く ※e：イベント引数取得
+        //----------------------------------------------
+        //  if(canvas_mouse_event==true){
+        //      const px = e.offsetX;
+        //      const py = e.offsetY;
+        //      ctx.strokeStyle = color;
+        //      ctx.lineWidth = bold_line;
+        //      ctx.beginPath();
+        //      ctx.lineJoin= "round";
+        //      ctx.lineCap = "round";
+        //      ctx.moveTo(oldX, oldY);
+        //      ctx.lineTo(px, py);
+        //      ctx.stroke();
+        //      oldX = px;
+        //      oldY = py;
+        //  }
+        //mousemoveイベント
+        $(can).on("mousemove",function(e){
+            console.log(e.offsetX);
+        if(canvas_mouse_event==true){
+            const px = e.offsetX; //現在地点x
+            const py = e.offsetY; //現在地点ｙ
+            ctx.strokeStyle = color;
+            ctx.lineWidth = bold_line;
+            ctx.beginPath();
+            ctx.lineJoin= "round";
+            ctx.lineCap = "round";
+            ctx.moveTo(oldX, oldY);
+            ctx.lineTo(px, py);
+            ctx.stroke();
+            oldX = px;//入れ替え
+            oldY = py;//入れ替え
+            }
+        });
+        //mouseup：フラグをfalse
+        //------------------------------------------------
+        //    canvas_mouse_event=false;
+        //------------------------------------------------
+        $(can).on("mouseup",function(){
+            canvas_mouse_event=false;
+        });
+        //#clear_btn：クリアーボタンAction
+        //-----------------------------------------------------------------
+        //    ctx.beginPath();
+        //    ctx.clearRect(0, 0, can.width, can.height);
+        //-----------------------------------------------------------------
+        $("#clear_btn").on("click",function(){
+            ctx.beginPath();
+            ctx.clearRect(0, 0, can.width, can.height);
+        });
+
+        //canvas外処理
+        $(can).on("mouseout",function(event){
+            canvas_mouse_event = false;//書くNG
+        });
+
+        
+
+        
+    </script>
+</body>
+
+</html>
